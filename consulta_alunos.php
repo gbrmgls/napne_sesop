@@ -287,10 +287,24 @@
   <p>
   <a href="index.php"><input type="button" name="sair" value="Sair"></a><br><br>
   <a href="cadastro_aluno.php"><input type="button" name="cadastrar" value="Cadastrar mais alunos"></a>
+  <form action="consulta_alunos.php" method="POST">
+    <input type="text" name="matricula"><input type="submit">
+  </form>
 
         </div>
           </div>
             </div>
               </div>
+    <?php
+
+    if(isset($_POST["matricula"])) {
+      $BD = new BD;
+      $retorno = $BD->comando("SELECT laudo FROM aluno WHERE matricula = '".$_POST["matricula"]."'");
+      $laudo = $retorno->fetch_assoc();
+
+      echo '<iframe src="'.$laudo["laudo"].'" width="100%" style="height:100%"></iframe>';
+    }
+
+    ?>
     </body>
 </html>

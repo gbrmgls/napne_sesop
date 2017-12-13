@@ -100,7 +100,11 @@
       else if(!$lap)
         $lap = "NAO";
 
-      $comando = "INSERT INTO aluno (nome, matricula, data_nasc, pa, npa, srm, la, aee, comp, sup, pai, pe, oj, oc, pcc, lap) VALUES ('".$nome."', '".$matricula."', '".$data_nasc."', '".$pa."', '".$npa."', '".$srm."', '".$la."', '".$aee."', '".$compl."', '".$supl."', '".$apai."', '".$pe."', '".$oj."', '".$ol."', '".$pcc."', '".$lap."')";
+      $pasta = "laudos/";
+      $laudo = $pasta . $matricula . "_" . basename($_FILES["laudo"]["name"]);
+      move_uploaded_file($_FILES["laudo"]["tmp_name"], $laudo);
+
+      $comando = "INSERT INTO aluno (nome, matricula, data_nasc, pa, npa, srm, la, aee, comp, sup, pai, pe, oj, oc, pcc, lap, laudo) VALUES ('".$nome."', '".$matricula."', '".$data_nasc."', '".$pa."', '".$npa."', '".$srm."', '".$la."', '".$aee."', '".$compl."', '".$supl."', '".$apai."', '".$pe."', '".$oj."', '".$ol."', '".$pcc."', '".$lap."', '".$laudo."')";
       $BD = new BD();
       $BD->comando($comando);
       header("Location: cadastro_efetuado_aluno.html");

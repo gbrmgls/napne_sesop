@@ -164,7 +164,7 @@
 
 
         <!-- Formulário -->
-        <form name="form1" method="POST" action="Aluno.php">
+        <form name="form1" method="POST" action="Aluno.php" enctype="multipart/form-data">
 
             &nbsp&nbsp&nbsp Matrícula: <input type="text" name="matricula" maxlength="8" size="10" onkeypress="return isNumberKey(event)" value="<?php if(isset($_POST['matricula'])) echo $_POST['matricula'];?>">
 
@@ -175,6 +175,10 @@
             &nbsp&nbsp
 
             Data nascimento: <input type="date" name="data_nasc" value="<?php if(isset($_POST['data_nasc'])) echo $_POST['data_nasc'];?>">
+
+            &nbsp&nbsp
+
+            Documentos: <input type="file" name="laudo">
 
 
         <p>
